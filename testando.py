@@ -1,7 +1,7 @@
 from mininet.topo import Topo
 
 class MyTopo( Topo ):
-    "3 host 2 switch 2 host custom topology"
+    "2 host 3 switch 4 host custom topology"
 
     def init( self ):
         "Create custom topo."
@@ -11,23 +11,23 @@ class MyTopo( Topo ):
 
         # Add hosts and switches
         leftHost = self.addHost( 'h1' )
-        leftHost1a=self.addHost('h1a')
-        centerHost=self.addHost('h2')
-        centerHost2a=self.addHost('h2a')
-        rightHost = self.addHost( 'h3' )
-        rightHost3a = self.addHost( 'h3a' )
+        leftHost2 = self.addHost('h2')
+        centerHost3 = self.addHost('h3')
+        centerHost4 = self.addHost('h4')
+        rightHost5 = self.addHost( 'h5' )
+        rightHost6 = self.addHost( 'h6' )
         leftSwitch = self.addSwitch( 's1' )
         centerSwitch = self.addSwitch( 's2' )
         rightSwitch = self.addSwitch( 's3' )
 
         # Add links
         self.addLink( leftHost, leftSwitch )
-        self.addLink( leftHost1a, leftSwitch )
-        self.addLink( centerHost, centerSwitch )
-        self.addLink( centerHost2a, centerSwitch )
-        self.addLink( rightHost, rightSwitch )
-        self.addLink( rightHost3a, rightSwitch )
-        self.addLink( leftSwitch, centerSwitch,  )
+        self.addLink( leftHost2, leftSwitch )
+        self.addLink( leftSwitch, centerSwitch )
+        self.addLink( centerHost3, centerSwitch )
+        self.addLink( centerHost4, centerSwitch )
         self.addLink( centerSwitch, rightSwitch )
+        self.addLink( rightHost5, rightSwitch )
+        self.addLink( rightHost6, rightSwitch )
 
 topos = { 'mytopo': ( lambda: MyTopo() ) }
